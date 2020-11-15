@@ -1,6 +1,6 @@
 import pandas as pd
 from dictionaries import vader, labmt, mpqa, sts
-from pretrained_models import logreg, stance_detection_sm
+from pretrained_models import logreg, stance_detection_sm, dssd_old
 from in_domain import models
 from tdlogreg import TargetExistenceExtractor
 from util import directed
@@ -28,8 +28,9 @@ def run_methods():
 		print("\n\nTD-LR\n\n")
 		data['TD-LR_%d' %run] = logreg(data['Tweet'].values, modeltype = 'tdlogreg')
 
-		print("\n\nDSSD-LR\n\n")
-		data['DSSD-LR_%d' %run] = logreg(data['Tweet'].values, modeltype = 'dssdlogreg')
+
+		print("\n\nDSSD\n\n")
+		data['DSSD_%d' %run] = dssd_old(run = run)
 
 		print("\n\nall in-domain\n\n")
 		in_domain_results = models(data['Tweet'].values, data['Target'].values, run)
@@ -39,7 +40,8 @@ def run_methods():
 	
 		# print(data.head())
 		# print(len(data))
-		# TO DO: Drop tweet column before saving as csv
+		# Drop tweet column before saving as csv
+		data = data.drop('Tweet', 1)
 		data.to_csv("../outputs/all_test_%d_results.csv" %(run), sep = "\t")
 	
 

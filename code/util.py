@@ -4,7 +4,15 @@ import numpy as np
 import pandas as pd
 
 
-# TO DO: Add direct stance calculation
+"""
+Calculate directness of stance
+
+from https://arxiv.org/pdf/1605.01655.pdf "Properties 3 and 4 are addressed to some extent by the fact that removing the query hashtag can sometimes result in tweetsthat do not explicitly mention the target."
+
+and "We removed the query hashtags from the tweets to exclude obvious cues for the classification task."
+
+"""
+
 def directed(tweet, target):
     target_words = target.lower().split(' ')
     if target == 'Recep Tayyip Erdoğan':
@@ -21,9 +29,7 @@ def data_load_and_save(datasets = 'all', test_size = 0.7, runs = 1):
 	if datasets != 'all':
 		all_data = data_load(datasets = datasets)
 	else:
-		all_data = data_load()
-
-	all_data = pd.read_csv("../data/all_data.csv", sep = "\t")
+		all_data = pd.read_csv("../data/all_data.csv", sep = "\t")
 
 	print(len(all_data))
 

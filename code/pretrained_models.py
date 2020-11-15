@@ -39,29 +39,11 @@ def td_lstm(tweets):
 
 
 
-def dssd_old(tweets):
-	from os import listdir
-	from os.path import isfile, join
-	targets = ['Hillary', 'Donald', 'Emmanuel', 'Jacob', 'Recep', 'Joko', 'Vladimir']
+def dssd_old(run = 0):
+	import pandas as pd
 
-	all_runs = []
-	for run in range(0, 5):
-		all_dfs = pd.DataFrame()
-		for target in targets:
-			mypath = "model_outputs/DSSD/run_%s/run_%d/" %(target, run)
-			onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f)) if 'txt' in f]
-			df = pd.read_csv(mypath+onlyfiles[1], sep = "\t")
-			all_dfs = all_dfs.append(df)
-
-	
-		all_data = pd.read_csv("DSSD/data/all_test_data_dssd_format.csv", sep = '\t')
-		print(len(all_data))
-
-		all_dfs.columns = ['ID', 'Target', 'Tweet', 'Predicted_Stance']
-		all_dfs = all_data.merge(all_dfs, on = ['ID', 'Tweet', 'Target'])
-		all_runs.append(all_dfs)
-	print(len(all_dfs['Predicted_Stance'].values))
-	return all_runs
+	data = pd.read_csv("DSSD/out/final_results/DSSD_%d.csv" %(run), sep = '\t')
+	return data['DSSD_Stance'].values
 
 
 
