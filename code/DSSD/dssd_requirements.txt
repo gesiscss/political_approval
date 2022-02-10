@@ -63,7 +63,7 @@ sklearn==0.0
 smart-open==1.8.1
 spacy==2.1.4
 srsly==0.0.7
-tensorflow==0.6.0
+tensorflow==2.5.3
 tensorflow-hub==0.4.0
 tensorflow-tensorboard==0.1.8
 termcolor==1.1.0
