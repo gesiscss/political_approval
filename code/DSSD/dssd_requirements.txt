@@ -42,7 +42,7 @@ pandas==0.24.2
 pathlib2==2.3.5
 plac==0.9.6
 preshed==2.0.1
-protobuf==3.0.0a3
+protobuf==3.18.3
 pyLDAvis==2.1.2
 pyrsistent==0.15.2
 PySocks==1.7.0
