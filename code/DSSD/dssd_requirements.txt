@@ -11,7 +11,7 @@ boto3==1.9.130
 botocore==1.12.130
 bson==0.5.8
 bz2file==0.98
-certifi==2018.1.18
+certifi==2022.12.7
 chardet==3.0.4
 Click==7.0
 cymem==2.0.2
